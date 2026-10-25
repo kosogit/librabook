@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*
+!.env.example
+.openai/
+.codex/
+.agents/
+playwright-report/
+*.log
+*.tar.gz
+.sites-runtime/
+test-results/
+data/

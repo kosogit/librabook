@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="Manage library bookings, seats, and student activity in LibraBook.">
+    <title>LibraBook — Admin dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#" aria-label="LibraBook home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5.8c2.7-.8 5.4-.4 8 1.1v12c-2.6-1.5-5.3-1.9-8-1.1v-12Zm16 0c-2.7-.8-5.4-.4-8 1.1v12c2.6-1.5 5.3-1.9 8-1.1v-12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 7v12" stroke="currentColor" stroke-width="1.7"/></svg>
+          </span>
+          <span>libra<span class="brand-light">book</span></span>
+        </a>
+
+        <div class="workspace-switcher">
+          <span class="workspace-avatar">S</span>
+          <span class="workspace-copy"><strong>StudyHub Library</strong><small>Workspace</small></span>
+          <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a class="nav-item active" href="#overview" data-page="Overview"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Overview</a>
+          <a class="nav-item" href="#libraries" data-page="Libraries"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12M3 20h18M8 20v-6h8v6M8 9h.01M12 9h.01M16 9h.01"/></svg>Libraries <span class="nav-count">12</span></a>
+          <a class="nav-item" href="#seats" data-page="Seat layout"><svg viewBox="0 0 24 24"><path d="M5 20v-2.5A2.5 2.5 0 0 1 7.5 15h9a2.5 2.5 0 0 1 2.5 2.5V20M7 15V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v7M4 20h16"/></svg>Seat layout</a>
+          <a class="nav-item" href="#bookings" data-page="Bookings"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 10h16m-11 4h2m3 0h2m-7 3h2"/></svg>Bookings <span class="nav-count alert-count">8</span></a>
+          <a class="nav-item" href="#students" data-page="Students"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20m6-9a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.5a4 4 0 0 1 0 7.7m1 3.3h.5a3.5 3.5 0 0 1 3.5 3.5V20"/></svg>Students</a>
+          <a class="nav-item" href="#payments" data-page="Payments"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18m-14 5h3"/></svg>Payments</a>
+          <a class="nav-item" href="#reports" data-page="Reports"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-6"/></svg>Reports</a>
+        </nav>
+
+        <p class="nav-label support-label">PREFERENCES</p>
+        <nav class="main-nav" aria-label="Preferences">
+          <a class="nav-item" href="#settings" data-page="Settings"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1a1.8 1.8 0 1 1-2.5 2.5l-.1-.1a1.8 1.8 0 0 0-3 .9v.2a1.8 1.8 0 1 1-3.6 0v-.2a1.8 1.8 0 0 0-3-.9l-.1.1a1.8 1.8 0 1 1-2.5-2.5l.1-.1a1.8 1.8 0 0 0-.9-3H3.8a1.8 1.8 0 1 1 0-3.6H4a1.8 1.8 0 0 0 .9-3l-.1-.1a1.8 1.8 0 1 1 2.5-2.5l.1.1a1.8 1.8 0 0 0 3-.9v-.2a1.8 1.8 0 1 1 3.6 0V2a1.8 1.8 0 0 0 3 .9l.1-.1a1.8 1.8 0 1 1 2.5 2.5l-.1.1a1.8 1.8 0 0 0 .9 3h.2a1.8 1.8 0 1 1 0 3.6H20a1.8 1.8 0 0 0-.6 3Z"/></svg>Settings</a>
+          <a class="nav-item" href="#help" data-page="Help & support"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.2 1.8c-1.1 1-1.8 1.2-1.8 2.7m0 3h.01"/></svg>Help & support</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="upgrade-card">
+            <span class="upgrade-icon"><svg viewBox="0 0 24 24"><path d="m12 3 2.3 5.7L20 11l-5.7 2.3L12 19l-2.3-5.7L4 11l5.7-2.3L12 3Z"/><path d="m19 15 1.1 2.9L23 19l-2.9 1.1L19 23l-1.1-2.9L15 19l2.9-1.1L19 15Z"/></svg></span>
+            <strong>Unlock more insights</strong>
+            <span>Get more out of your library with Pro.</span>
+            <button class="upgrade-button" type="button">Explore plans <span>→</span></button>
+          </div>
+          <button class="profile-button" type="button">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&h=96&fit=crop&crop=faces" alt="">
+            <span class="profile-copy"><strong>Alex Morgan</strong><small>Library owner</small></span>
+            <svg class="chevron" viewBox="0 0 20 20"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="menu-toggle" type="button" aria-label="Open navigation">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="page-title">Overview</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+              <input id="global-search" type="search" placeholder="Search anything..." aria-label="Search libraries and complaints">
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="icon-button notification-button" id="notifications-button" type="button" aria-label="Notifications">
+              <svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"/></svg><i></i>
+            </button>
+            <button class="date-button" type="button"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M7.5 3v4m9-4v4m-13 3h17"/></svg><span>Oct 12, 2025</span><svg class="date-chevron" viewBox="0 0 20 20"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></button>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow"><span class="status-dot"></span> MONDAY, OCTOBER 12, 2025</p>
+              <h1>Good morning, Alex <span class="wave">✳</span></h1>
+              <p class="welcome-subtitle">Here’s what’s happening at your library today.</p>
+            </div>
+            <div class="welcome-actions">
+              <button class="button button-secondary" id="export-button" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 17v3h14v-3"/></svg>Export report</button>
+              <button class="button button-primary" id="add-booking-button" type="button"><svg viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg>New booking</button>
+            </div>
+          </section>
+
+          <section class="stats-grid" aria-label="Library statistics">
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon blue"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20m6-9a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.5a4 4 0 0 1 0 7.7m1 3.3h.5a3.5 3.5 0 0 1 3.5 3.5V20"/></svg></span><button class="more-button" aria-label="More options">···</button></div>
+              <p class="stat-label">Today’s bookings</p><div class="stat-value">124 <span class="stat-change positive">↗ 12.8%</span></div><p class="stat-note">vs. 110 bookings yesterday</p>
+              <div class="sparkline spark-blue"><svg viewBox="0 0 130 30" preserveAspectRatio="none"><path d="M0 25 C12 23 13 17 25 20 S40 24 50 13 68 20 76 11 91 17 98 8 112 15 130 3"/></svg></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon green"><svg viewBox="0 0 24 24"><path d="M4 18V9m5 9V5m5 13v-6m5 6V7"/></svg></span><button class="more-button" aria-label="More options">···</button></div>
+              <p class="stat-label">Available seats</p><div class="stat-value">36<span class="stat-divider">/</span>60 <span class="stat-change positive">↗ 8.2%</span></div><p class="stat-note">Seats are filling up fast</p>
+              <div class="sparkline spark-green"><svg viewBox="0 0 130 30" preserveAspectRatio="none"><path d="M0 25 C13 22 17 18 27 21 S43 13 53 18 70 10 79 15 92 17 103 8 116 10 130 4"/></svg></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon violet"><svg viewBox="0 0 24 24"><path d="M12 2v20m5-15H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><button class="more-button" aria-label="More options">···</button></div>
+              <p class="stat-label">Revenue (today)</p><div class="stat-value">₹2,480 <span class="stat-change positive">↗ 18.4%</span></div><p class="stat-note">vs. ₹2,094 yesterday</p>
+              <div class="sparkline spark-violet"><svg viewBox="0 0 130 30" preserveAspectRatio="none"><path d="M0 25 C12 26 16 18 26 20 S40 15 51 17 64 9 75 14 90 5 99 10 116 7 130 2"/></svg></div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top"><span class="stat-icon orange"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20m6-9a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6-7.5a4 4 0 0 1 0 7.7m1 3.3h.5a3.5 3.5 0 0 1 3.5 3.5V20"/></svg></span><button class="more-button" aria-label="More options">···</button></div>
+              <p class="stat-label">Active users</p><div class="stat-value">52 <span class="stat-change negative">↘ 2.4%</span></div><p class="stat-note">2 users less than yesterday</p>
+              <div class="sparkline spark-orange"><svg viewBox="0 0 130 30" preserveAspectRatio="none"><path d="M0 10 C13 8 19 14 27 10 S42 17 52 12 65 16 77 11 91 18 100 14 115 19 130 16"/></svg></div>
+            </article>
+          </section>
+
+          <section class="analytics-grid">
+            <article class="panel bookings-panel" id="bookings">
+              <div class="panel-heading">
+                <div><h2>Booking overview</h2><p>Track your library’s booking activity over time</p></div>
+                <label class="select-wrap"><select id="chart-period" aria-label="Chart period"><option value="week">This week</option><option value="month">This month</option><option value="year">This year</option></select><svg viewBox="0 0 20 20"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></label>
+              </div>
+              <div class="chart-legend"><span><i class="legend-dot bookings-dot"></i>Bookings</span><span><i class="legend-dot checkins-dot"></i>Check-ins</span><span class="chart-total">124 <small>total bookings</small></span></div>
+              <div class="chart-area">
+                <div class="y-labels"><span>160</span><span>120</span><span>80</span><span>40</span><span>0</span></div>
+                <div class="chart-plot">
+                  <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+                  <svg class="line-chart" viewBox="0 0 650 190" preserveAspectRatio="none" role="img" aria-label="Bookings and check-ins rise throughout the week">
+                    <defs><linearGradient id="blue-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#3878f6" stop-opacity=".16"/><stop offset="100%" stop-color="#3878f6" stop-opacity="0"/></linearGradient></defs>
+                    <path class="area-fill" d="M0 146 C38 136 60 142 93 118 S147 130 186 103 235 113 279 84 326 96 372 70 420 85 465 55 513 75 558 41 607 48 650 20V190H0Z"/>
+                    <path class="line-main" d="M0 146 C38 136 60 142 93 118 S147 130 186 103 235 113 279 84 326 96 372 70 420 85 465 55 513 75 558 41 607 48 650 20"/>
+                    <path class="line-secondary" d="M0 165 C40 153 55 162 93 143 S144 150 186 128 238 140 279 111 330 122 372 101 420 111 465 86 516 100 558 72 604 86 650 59"/>
+                    <circle class="chart-point" cx="465" cy="55" r="4"/><circle class="chart-point" cx="650" cy="20" r="4"/>
+                  </svg>
+                  <div class="x-labels"><span>Mon, 6</span><span>Tue, 7</span><span>Wed, 8</span><span>Thu, 9</span><span>Fri, 10</span><span>Sat, 11</span><span>Sun, 12</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel distribution-panel">
+              <div class="panel-heading">
+                <div><h2>User distribution</h2><p>Who’s using your library</p></div>
+                <button class="more-button" aria-label="More options">···</button>
+              </div>
+              <div class="donut-wrap">
+                <div class="donut-chart"><div class="donut-center"><strong>1,284</strong><span>Total users</span></div></div>
+                <div class="distribution-legend">
+                  <span><i class="legend-dot students-dot"></i><b>Students</b><strong>72%</strong></span>
+                  <span><i class="legend-dot owners-dot"></i><b>Owners</b><strong>16%</strong></span>
+                  <span><i class="legend-dot reception-dot"></i><b>Receptionists</b><strong>7%</strong></span>
+                  <span><i class="legend-dot admins-dot"></i><b>Admins</b><strong>5%</strong></span>
+                </div>
+              </div>
+              <div class="distribution-footer"><span><i class="tiny-up">↗</i> 12.5% <small>compared to last month</small></span><a href="#students">View users <span>→</span></a></div>
+            </article>
+          </section>
+
+          <section class="bottom-grid">
+            <article class="panel libraries-panel" id="libraries">
+              <div class="panel-heading">
+                <div><h2>Recent libraries</h2><p>Your most active library locations</p></div>
+                <a class="text-link" href="#libraries">View all <span>→</span></a>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>LIBRARY</th><th>LOCATION</th><th>BOOKINGS</th><th>STATUS</th><th></th></tr></thead>
+                  <tbody id="library-rows">
+                    <tr data-search="studyhub library kanpur uttar pradesh"><td><span class="library-cell"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=96&h=96&fit=crop" alt=""><span><strong>StudyHub Library</strong><small>studyhub@gmail.com</small></span></span></td><td>Kanpur, UP</td><td><strong>248</strong></td><td><span class="status-pill approved"><i></i>Approved</span></td><td><button class="row-more" aria-label="StudyHub Library options">···</button></td></tr>
+                    <tr data-search="knowledge point library lucknow uttar pradesh"><td><span class="library-cell"><img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=96&h=96&fit=crop" alt=""><span><strong>Knowledge Point</strong><small>knowledgepoint@gmail.com</small></span></span></td><td>Lucknow, UP</td><td><strong>186</strong></td><td><span class="status-pill pending"><i></i>Pending</span></td><td><button class="row-more" aria-label="Knowledge Point options">···</button></td></tr>
+                    <tr data-search="the study zone library varanasi uttar pradesh"><td><span class="library-cell"><img src="https://images.unsplash.com/photo-1568667256549-094345857637?w=96&h=96&fit=crop" alt=""><span><strong>The Study Zone</strong><small>thestudyzone@gmail.com</small></span></span></td><td>Varanasi, UP</td><td><strong>142</strong></td><td><span class="status-pill approved"><i></i>Approved</span></td><td><button class="row-more" aria-label="The Study Zone options">···</button></td></tr>
+                  </tbody>
+                </table>
+                <p class="empty-state" id="empty-libraries" hidden>No libraries match your search.</p>
+              </div>
+            </article>
+
+            <article class="panel complaints-panel">
+              <div class="panel-heading">
+                <div><h2>Recent complaints</h2><p>Stay on top of student feedback</p></div>
+                <a class="text-link" href="#complaints">View all <span>→</span></a>
+              </div>
+              <div class="complaint-list" id="complaint-rows">
+                <div class="complaint-row" data-search="seat was dirty studyhub library"><span class="complaint-avatar rose">SD</span><span class="complaint-copy"><strong>Seat was dirty</strong><small>StudyHub Library <i>·</i> 12 min ago</small></span><span class="status-pill open"><i></i>Open</span></div>
+                <div class="complaint-row" data-search="studyroom noise complaint knowledge point"><span class="complaint-avatar gold">SN</span><span class="complaint-copy"><strong>Studyroom noise</strong><small>Knowledge Point <i>·</i> 1 hr ago</small></span><span class="status-pill progress"><i></i>In progress</span></div>
+                <div class="complaint-row" data-search="ac not working knowledge point library"><span class="complaint-avatar blue-complaint">AC</span><span class="complaint-copy"><strong>AC not working</strong><small>Knowledge Point <i>·</i> 3 hrs ago</small></span><span class="status-pill resolved"><i></i>Resolved</span></div>
+              </div>
+              <p class="empty-state" id="empty-complaints" hidden>No complaints match your search.</p>
+            </article>
+          </section>
+          <footer class="page-footer"><span>© 2025 LibraBook, Inc.</span><span>Made for better study days <i>✦</i></span><a href="#help">Need help?</a></footer>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="booking-dialog" id="booking-dialog">
+      <form method="dialog" id="booking-form">
+        <div class="dialog-heading"><span class="dialog-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14m-7-7h14"/></svg></span><button class="dialog-close" type="submit" aria-label="Close">×</button></div>
+        <h2>Create a booking</h2><p>Add a student booking for your library.</p>
+        <label>Student name<input name="student" placeholder="e.g. Priya Singh" required></label>
+        <label>Study seat<select name="seat"><option>Seat A12 · Floor 1</option><option>Seat B04 · Floor 1</option><option>Seat C08 · Floor 2</option></select></label>
+        <label>Booking duration<select name="duration"><option>2 hours</option><option>1 hour</option><option>4 hours</option><option>Full day</option></select></label>
+        <div class="dialog-actions"><button class="button button-secondary" type="submit">Cancel</button><button class="button button-primary" id="confirm-booking" type="button">Create booking</button></div>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
